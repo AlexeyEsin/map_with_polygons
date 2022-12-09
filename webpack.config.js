@@ -10,6 +10,7 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 const isProd = process.env.NODE_ENV === "production";
+const isServe = process.env.NODE_ENV === "serve";
 
 const optimization = () => {
   const config = {
@@ -46,9 +47,7 @@ if (isProd) {
     })
   );
   plugins.push(new webpack.optimize.AggressiveMergingPlugin());
-}
-
-if (process.env.NODE_ENV === "serve") {
+} else if (isServe) {
   plugins.push(new ReactRefreshWebpackPlugin({ overlay: false }));
 }
 
@@ -77,7 +76,7 @@ module.exports = {
     filename: !isProd ? "js/[name].js" : "js/[name]-[contenthash].js",
     chunkFilename: "[name].chunk.js",
     assetModuleFilename: !isProd ? "[name][ext]" : "[name]-[contenthash][ext]",
-    publicPath: "./",
+    publicPath: isServe ? "/" : "./",
     clean: true,
   },
   optimization: optimization(),
