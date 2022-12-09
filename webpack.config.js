@@ -77,7 +77,7 @@ module.exports = {
     filename: !isProd ? "js/[name].js" : "js/[name]-[contenthash].js",
     chunkFilename: "[name].chunk.js",
     assetModuleFilename: !isProd ? "[name][ext]" : "[name]-[contenthash][ext]",
-    publicPath: "/",
+    publicPath: "./",
     clean: true,
   },
   optimization: optimization(),
