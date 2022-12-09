@@ -57,7 +57,7 @@ const YandexMap = () => {
                 iconContent: polygon.Id,
               }}
               options={{
-                preset: "islands#greenStretchyIcon",
+                preset: "islands#darkGreenStretchyIcon",
               }}
             />
           </React.Fragment>
